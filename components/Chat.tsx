@@ -103,7 +103,7 @@ export default function Chat() {
                 <button
                   key={s}
                   onClick={() => send(s)}
-                  className="rounded-xl border border-line bg-ink/40 px-3.5 py-3 text-left text-xs text-fog transition-colors hover:border-fog/50 hover:text-bone"
+                  className="min-w-0 break-words rounded-xl border border-line bg-ink/40 px-3.5 py-3 text-left text-xs text-fog transition-colors hover:border-fog/50 hover:text-bone [overflow-wrap:anywhere]"
                 >
                   {s}
                 </button>
@@ -152,7 +152,7 @@ function Bubble({ msg, loading }: { msg: Msg; loading: boolean }) {
   return (
     <div className={`flex ${isUser ? "justify-end" : "justify-start"}`}>
       <div
-        className={`max-w-[85%] whitespace-pre-wrap rounded-2xl px-4 py-3 text-sm leading-relaxed ${
+        className={`max-w-[85%] whitespace-pre-wrap break-words [overflow-wrap:anywhere] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
           isUser
             ? "bg-bone text-ink"
             : "border border-line bg-ink/50 text-bone"
