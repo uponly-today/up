@@ -35,10 +35,9 @@ export default function Hero() {
         animate="show"
         className="z-10 mt-6 max-w-4xl font-display text-5xl font-medium leading-[1.02] tracking-tight sm:text-7xl"
       >
-        <span className="text-gradient">Your AI co-pilot</span>
+        <span className="text-gradient">Ask Base anything.</span>
         <br />
-        for <span className="text-up">Base.</span> Everything{" "}
-        <span className="italic">uponly.</span>
+        This is <span className="italic text-up">uponly.</span>
       </motion.h1>
 
       <motion.p
@@ -48,9 +47,9 @@ export default function Hero() {
         animate="show"
         className="z-10 mt-6 max-w-xl text-balance text-base text-fog sm:text-lg"
       >
-        A private AI agent for Base. Ask about wallets, tokens and tokenized
-        assets in plain language — read live, screened for security signals, with
-        zero wallet connection. Your keys and your queries stay yours.
+        uponly is a private AI agent for Base. Wallets, tokens, tokenized assets
+        and risk signals — answered live, in plain words. Read-only, no wallet to
+        connect.
       </motion.p>
 
       <motion.div
