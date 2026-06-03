@@ -2,33 +2,33 @@ import Reveal from "./Reveal";
 
 const FEATURES = [
   {
-    title: "Read any wallet",
-    body: "Drop a 0x address and get ETH balance, token holdings and recent activity — instantly, in plain English.",
-    glyph: "◎",
-  },
-  {
-    title: "Track tokens in real time",
-    body: "Look up any ERC-20 on Base by name or symbol. Price, market cap, supply and holders, pulled live.",
-    glyph: "↗",
-  },
-  {
-    title: "Natural-language on-chain",
-    body: "No query language, no explorer tabs. Just ask. uponly translates your question into live chain reads.",
-    glyph: "✦",
-  },
-  {
-    title: "Built for Base",
-    body: "Native to Coinbase's L2. Fast, low-fee, and focused — uponly speaks Base fluently.",
+    title: "Base-native, end to end",
+    body: "Built for Coinbase's L2 — chain 8453 and nothing else. Fast, low-fee and focused, so uponly speaks Base fluently instead of spreading thin.",
     glyph: "▲",
   },
   {
-    title: "Powered by Xiaomi MiMo",
-    body: "A sharp reasoning model under the hood, wired directly to on-chain tools for grounded, factual answers.",
-    glyph: "✶",
+    title: "An agent, not a search bar",
+    body: "uponly reasons, picks the right on-chain tools and chains them together to answer. Ask a follow-up and it keeps the thread — a real AI agent for the chain.",
+    glyph: "✦",
+  },
+  {
+    title: "Tokenized & real-world assets",
+    body: "From memecoins to stablecoins and tokenized RWAs on Base — look up any ERC-20 by name or symbol for price, supply, holders and market cap, live.",
+    glyph: "◎",
+  },
+  {
+    title: "Privacy by default",
+    body: "Read-only and connectionless. No wallet to link, no signatures, no keys held. Your address lookups and questions aren't tied to your identity.",
+    glyph: "⦿",
+  },
+  {
+    title: "Security signals built in",
+    body: "Every token answer carries reputation and contract context, so honeypots and sketchy deployments surface before you act. Diligence, not hype.",
+    glyph: "🛡",
   },
   {
     title: "Data, not promises",
-    body: "Every number is fetched live and shown with its source context. No price calls, no hype — just the chain.",
+    body: "Powered by Xiaomi MiMo and wired straight to live chain reads. Every number is fetched at query time with its source — no price calls, no made-up figures.",
     glyph: "≡",
   },
 ];
@@ -38,10 +38,10 @@ export default function Features() {
     <section id="features" className="relative mx-auto max-w-6xl px-5 py-28">
       <Reveal>
         <p className="font-display text-sm uppercase tracking-[0.3em] text-up">
-          Features
+          Why uponly
         </p>
         <h2 className="mt-3 max-w-2xl font-display text-4xl font-medium tracking-tight sm:text-5xl">
-          The chain, finally readable.
+          What only uponly does.
         </h2>
       </Reveal>
 

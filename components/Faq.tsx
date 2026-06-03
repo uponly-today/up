@@ -6,7 +6,7 @@ import Reveal from "./Reveal";
 const FAQS = [
   {
     q: "What is uponly?",
-    a: "uponly is an AI co-pilot for the Base chain. You ask questions in plain language and it answers using live on-chain data — wallet balances, token info, transactions and more.",
+    a: "uponly is a private AI agent for the Base chain. You ask questions in plain language and it reasons across live on-chain data — wallet balances, tokens and tokenized assets, transactions and security signals — to answer. It's read-only and never connects your wallet.",
   },
   {
     q: "Which network does it support?",

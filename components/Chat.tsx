@@ -7,9 +7,9 @@ type Msg = { role: "user" | "assistant"; content: string };
 
 const SUGGESTIONS = [
   "What's the ETH balance of 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045 on Base?",
-  "Show me USDC on Base — price and market cap",
-  "What tokens does 0x4200000000000000000000000000000000000006 hold?",
-  "Latest transactions for vitalik.eth's address on Base",
+  "Look up USDC on Base — price, holders and is it safe?",
+  "Check the reputation of token 0x4200000000000000000000000000000000000006",
+  "What tokens does vitalik.eth hold on Base?",
 ];
 
 export default function Chat() {
@@ -95,8 +95,8 @@ export default function Chat() {
             <Logo size={48} rounded={12} className="mb-5 opacity-90" />
             <h3 className="font-display text-xl">Ask the chain anything.</h3>
             <p className="mt-2 max-w-sm text-sm text-fog">
-              Wallets, tokens, balances and transactions on Base — answered with
-              live on-chain data.
+              Wallets, tokens and tokenized assets on Base — answered live, with
+              security signals. Read-only, no wallet needed.
             </p>
             <div className="mt-6 grid w-full max-w-lg gap-2 sm:grid-cols-2">
               {SUGGESTIONS.map((s) => (
