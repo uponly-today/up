@@ -16,7 +16,7 @@ const sans = Geist({
 
 const SITE = "https://uponly.today";
 const DESC =
-  "uponly is your AI co-pilot for the Base chain. Ask anything about wallets, tokens and transactions in plain language — answered with live on-chain data.";
+  "uponly is a private AI agent for the Base chain. Ask about wallets, tokens and tokenized assets in plain language — answered live, with built-in security signals and zero wallet connection.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),

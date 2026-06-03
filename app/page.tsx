@@ -19,11 +19,15 @@ export default function Home() {
         <section id="chat" className="relative mx-auto max-w-6xl px-5 pb-28">
           <Reveal className="mb-10 text-center">
             <p className="font-display text-sm uppercase tracking-[0.3em] text-up">
-              Live demo
+              Live agent
             </p>
             <h2 className="mt-3 font-display text-4xl font-medium tracking-tight sm:text-5xl">
-              Talk to Base.
+              Your private agent for Base.
             </h2>
+            <p className="mx-auto mt-4 max-w-md text-sm text-fog">
+              Read-only and yours. No wallet connection, no keys, no trace —
+              just the chain, decoded.
+            </p>
           </Reveal>
           <Reveal>
             <Chat />

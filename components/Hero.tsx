@@ -25,7 +25,7 @@ export default function Hero() {
         className="z-10 inline-flex items-center gap-2 rounded-full border border-line bg-surface/60 px-3.5 py-1.5 text-xs text-fog backdrop-blur"
       >
         <span className="h-1.5 w-1.5 rounded-full bg-up" />
-        Live on the Base chain
+        Private AI agent · Base chain
       </motion.div>
 
       <motion.h1
@@ -48,9 +48,9 @@ export default function Hero() {
         animate="show"
         className="z-10 mt-6 max-w-xl text-balance text-base text-fog sm:text-lg"
       >
-        Ask anything about wallets, tokens and transactions in plain language.
-        uponly reads the chain in real time and answers — no block explorers, no
-        spreadsheets.
+        A private AI agent for Base. Ask about wallets, tokens and tokenized
+        assets in plain language — read live, screened for security signals, with
+        zero wallet connection. Your keys and your queries stay yours.
       </motion.p>
 
       <motion.div

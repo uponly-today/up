@@ -124,6 +124,7 @@ export async function lookupTokenBySymbol(query: string) {
       exchange_rate?: string | null;
       circulating_market_cap?: string | null;
       holders_count?: string | null;
+      reputation?: string | null;
     }>;
   }>(`/api/v2/tokens?q=${encodeURIComponent(query)}&type=ERC-20`);
 
@@ -134,6 +135,8 @@ export async function lookupTokenBySymbol(query: string) {
     priceUsd: t.exchange_rate ?? null,
     marketCap: t.circulating_market_cap ?? null,
     holders: t.holders_count ?? null,
+    // security signal: Blockscout reputation ("ok" | "neutral" | "scam" | null)
+    reputation: t.reputation ?? "unknown",
   }));
 
   return { count: items.length, results: items };
@@ -150,6 +153,7 @@ export async function getTokenInfo(contract: string) {
     exchange_rate?: string | null;
     circulating_market_cap?: string | null;
     holders_count?: string | null;
+    reputation?: string | null;
     address_hash?: string;
   }>(`/api/v2/tokens/${contract}`);
 
@@ -171,6 +175,8 @@ export async function getTokenInfo(contract: string) {
     priceUsd: t.exchange_rate ?? null,
     marketCap: t.circulating_market_cap ?? null,
     holders: t.holders_count ?? null,
+    // security signal: Blockscout reputation ("ok" | "neutral" | "scam" | null)
+    reputation: t.reputation ?? "unknown",
   };
 }
 
@@ -225,7 +231,7 @@ export const baseToolSchemas = [
     function: {
       name: "lookupTokenBySymbol",
       description:
-        "Search Base for tokens matching a name or symbol. Returns price, market cap and contract address.",
+        "Search Base for tokens matching a name or symbol. Returns price, market cap, holders, contract address and a reputation security signal.",
       parameters: {
         type: "object",
         properties: {
@@ -240,7 +246,7 @@ export const baseToolSchemas = [
     function: {
       name: "getTokenInfo",
       description:
-        "Get detailed info (supply, price, market cap, holders) for a specific token contract on Base.",
+        "Get detailed info (supply, price, market cap, holders, reputation/security signal) for a specific token contract on Base.",
       parameters: {
         type: "object",
         properties: {
