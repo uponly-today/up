@@ -23,7 +23,7 @@ const FEATURES = [
   },
   {
     title: "Security signals built in",
-    body: "Every token answer carries reputation and contract context, so honeypots and sketchy deployments surface before you act. Diligence, not hype.",
+    body: "Every token answer carries reputation, contract context and a WAKE 0-100 safety score with rug/honeypot flags — so sketchy deployments surface before you act. Diligence, not hype.",
     glyph: "🛡",
   },
   {
