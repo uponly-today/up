@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "uponly — AI co-pilot for Base",
     description: DESC,
-    creator: `@${process.env.NEXT_PUBLIC_X_HANDLE || "uponly"}`,
+    creator: `@${process.env.NEXT_PUBLIC_X_HANDLE || "uponly_today"}`,
   },
   robots: { index: true, follow: true },
 };
