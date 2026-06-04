@@ -8,7 +8,7 @@ type Msg = { role: "user" | "assistant"; content: string };
 const SUGGESTIONS = [
   "What's the ETH balance of 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045 on Base?",
   "Look up USDC on Base — price, holders and is it safe?",
-  "Check the reputation of token 0x4200000000000000000000000000000000000006",
+  "Is $DEGEN (0x4ed4e862860bed51a9570b96d89af5e1b0efefed) safe? Rug check",
   "What tokens does vitalik.eth hold on Base?",
 ];
 

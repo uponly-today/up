@@ -180,6 +180,72 @@ export async function getTokenInfo(contract: string) {
   };
 }
 
+/**
+ * WAKE Token Spotter — read-only safety/rug-risk intelligence for Base tokens.
+ * Public, free, no API key. Source: https://wakeonbase.com (Bankr skill).
+ * Returns a 0-100 composite score, tier, per-criterion breakdown, GoPlus
+ * security flags, launch-protocol detection and a narrative. NFA.
+ */
+const WAKE_BASE = process.env.WAKE_BASE_URL || "https://wakeonbase.com";
+
+export async function getTokenSafetyScore(contract: string) {
+  assertAddress(contract);
+  const res = await fetch(
+    `${WAKE_BASE}/api/spotter/${contract.toLowerCase()}`,
+    { headers: { accept: "application/json" }, cache: "no-store" }
+  );
+  if (!res.ok) {
+    throw new Error(`WAKE ${res.status} for ${contract}`);
+  }
+  const d = (await res.json()) as {
+    score?: number | null;
+    symbol?: string | null;
+    tier?: string | null;
+    breakdown?: Record<string, number> | null;
+    launch_protocol?: string | null;
+    tags?: string[] | null;
+    security_advisory?: {
+      level?: string;
+      reasons?: string[];
+      message?: string | null;
+    } | null;
+    analysis?: string | null;
+    cached?: boolean | null;
+    address?: string | null;
+    message?: string | null;
+    links?: Record<string, string> | null;
+  };
+
+  // Token not yet analyzed / public fresh-analysis quota reached.
+  if (d.score == null) {
+    return {
+      available: false,
+      address: d.address ?? contract,
+      message:
+        d.message ??
+        "No cached WAKE analysis for this token yet, and the public daily quota is used up.",
+      requestUrl: d.links?.request_analysis ?? d.links?.terminal ?? null,
+      source: "WAKE on Base (wakeonbase.com)",
+    };
+  }
+
+  return {
+    available: true,
+    symbol: d.symbol ?? null,
+    score: d.score, // 0-100
+    tier: d.tier ?? null, // strong | solid | mixed | weak | red_flag
+    breakdown: d.breakdown ?? null, // deployer/liquidity/contract/market/social, 0-20 each
+    launchProtocol: d.launch_protocol ?? null, // bankr | clanker | direct | unknown
+    tags: d.tags ?? [],
+    securityAdvisory: d.security_advisory ?? null, // GoPlus flags
+    analysis: d.analysis ?? null,
+    cached: d.cached ?? null,
+    links: d.links ?? null,
+    source:
+      "WAKE on Base (wakeonbase.com) — read-only intelligence, not financial advice",
+  };
+}
+
 /** OpenAI-compatible tool schemas exposed to the model. */
 export const baseToolSchemas = [
   {
@@ -259,6 +325,24 @@ export const baseToolSchemas = [
       },
     },
   },
+  {
+    type: "function" as const,
+    function: {
+      name: "getTokenSafetyScore",
+      description:
+        "Get a WAKE safety / rug-risk score (0-100) for a token on Base: tier (strong/solid/mixed/weak/red_flag), per-criterion breakdown (deployer quality, liquidity health, contract safety, market & social signals), GoPlus security flags, launch-protocol detection (Bankr/Clanker/direct) and a narrative. Use this whenever the user asks if a Base token is safe, legit, a scam or a rug.",
+      parameters: {
+        type: "object",
+        properties: {
+          contract: {
+            type: "string",
+            description: "The 0x... token contract address on Base",
+          },
+        },
+        required: ["contract"],
+      },
+    },
+  },
 ];
 
 type ToolArgs = Record<string, string>;
@@ -279,6 +363,8 @@ export async function runBaseTool(
       return lookupTokenBySymbol(args.query);
     case "getTokenInfo":
       return getTokenInfo(args.contract);
+    case "getTokenSafetyScore":
+      return getTokenSafetyScore(args.contract);
     default:
       throw new Error(`Unknown tool: ${name}`);
   }
