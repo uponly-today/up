@@ -2,7 +2,7 @@
 
 import { Logo } from "./Logo";
 
-const X_HANDLE = process.env.NEXT_PUBLIC_X_HANDLE || "uponly";
+const X_HANDLE = process.env.NEXT_PUBLIC_X_HANDLE || "uponly_today";
 
 function XIcon({ className = "" }: { className?: string }) {
   return (
